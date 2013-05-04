@@ -1,0 +1,29 @@
+Version 1.3.1
+ - Can sort by expiration
+ - Enable the "Is the invitation code is required" setting by default
+
+Version 1.3
+ - Added "Max attempts for registration" setting
+ - Added "Sort by" feature
+ - Fix bug with account activation
+ - Added "Mass Delete" feature
+ - Fix a theme issue
+ - Additional usergroups support for Invitation Manager admin/normal access
+ - Applied search to more fields
+ - Added "Referred By" in profile
+ - Display list of referred users in profile
+ - Set wich group can invite wich group
+ - Abort installation/activation if the "Use Referrals System" setting is enabled
+ - Added a third admin group
+ - Added Invitation Manager in Who's Online page
+
+Version 1.2
+ - Fix security issue
+ - Added "My invitations" for administrators
+ - Added "Header & Footer text" setting
+
+Version 1.1
+ - Feature update
+
+Version 1.0
+ - First release
