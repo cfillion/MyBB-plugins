@@ -45,7 +45,7 @@ define('CREATEDBY', 1);
     <a href="">Generate more codes</a>
   </p>
 
-  <ol>
+  <ol style="font-family: monospace">
   <?php
   $db = new PDO(
     'mysql:host=' . DB_HOST . 'dbname=' . DB_NAME,
@@ -57,7 +57,27 @@ define('CREATEDBY', 1);
   $quantity = intval($_POST['quantity']);
 
   for($i = 0; $i < $quantity; $i++) {
-    $code = substr(sha1(mt_rand()), 0, 8);
+    $length = 8; // minimum length
+
+    for($j = 0; true; $j++) {
+      $code = substr(sha1(mt_rand()), 0, $length);
+
+      $check = $db->prepare('SELECT 0 FROM ' . DB_TABLE . ' WHERE code = ?');
+      $check->execute(array($code));
+
+      if(count($check->fetchAll()) == 0)
+        break; // Ok, the invitation code is unique
+      else if($j > 100) {
+        if($length >= 10) { // invitation codes cannot be longer than 10 chars
+          echo '<h2>Aborted: To much collisions.</h2>';
+          exit;
+        }
+
+        // let's try again!
+        $j = 0;
+        $length++;
+      }
+    }
 
     $stmt = $db->prepare('INSERT INTO ' . DB_TABLE . " (code, maxuses, email,
       expire, primarygroup, othergroups, createdby) VALUES (
@@ -78,6 +98,8 @@ define('CREATEDBY', 1);
   }
   ?>
   </ol>
+
+  Done.
 <?php } ?>
 </body>
 </html>
