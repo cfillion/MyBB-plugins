@@ -48,7 +48,7 @@ define('CREATEDBY', 1);
   <ol style="font-family: monospace">
   <?php
   $db = new PDO(
-    'mysql:host=' . DB_HOST . 'dbname=' . DB_NAME,
+    'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME,
     DB_USER, DB_PASS
   );
 
