@@ -25,12 +25,12 @@ function invite_info()
 	return array(
 		"name"			=> "Invitation Plugin",
 		"description"	=> "Invite user to your board.",
-		"website"		=> "http://cfillion.no-ip.org/?invitation=v1.3.2",
+		"website"		=> "https://cfillion.ca/?invitation=v1.3.2.1",
 		"author"		=> "cfillion",
-		"authorsite"	=> "http://cfillion.no-ip.org/?invitation=v1.3.2",
-		"version"		=> "1.3.2",
+		"authorsite"	=> "https://cfillion.ca/?invitation=v1.3.2.1",
+		"version"		=> "1.3.2.1",
 		"guid" 			=> "2418077c65561fe2bd0ac601bdb0c889",
-		"compatibility" => "16*"
+		"compatibility" => "16*, 18*"
 	);
 }
 
@@ -326,7 +326,7 @@ function invite_check_usereferrals()
 	{
 		$infos = invite_info();
 		// We display a warning if the "Use Referrals System" setting is enabled
-		flash_message($infos['name'].' requires that the "Use Referrals System" setting is disabled. This feature will be overridden after activation/installation.
+		flash_message($infos['name'].' requires that the "Use Referrals System" setting be disabled. This feature will be overridden after activation/installation.
 <a href="index.php?module=config&amp;action=change&amp;search=usereferrals">Click here to configure setting.</a>', 'error');
 		admin_redirect('index.php?module=config-plugins');
 	}
